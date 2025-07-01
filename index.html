@@ -1,290 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Notifications</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        background-color: #f5f6fa;
-        margin: 0;
-        padding: 0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <title>Notifications</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background-color: #f5f6fa;
+      margin: 0;
+      padding: 0;
+    }
 
+    main {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .mark-all-button {
+      background: none;
+      border: none;
+      color: hsl(219, 85%, 26%);
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    ul#list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul#list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    ul#list li:last-child {
+      border-bottom: none;
+    }
+
+    ul#list li img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+    }
+
+    .notification-infos {
+      flex: 1;
+    }
+
+    .notification-infos a {
+      font-weight: bold;
+      color: hsl(219, 85%, 26%);
+      text-decoration: none;
+    }
+
+    .notification-infos span {
+      margin-right: 5px;
+    }
+
+    .notification-link-post {
+      font-weight: bold;
+      color: hsl(219, 85%, 26%);
+      text-decoration: none;
+    }
+
+    .new-notification {
+      background-color: hsl(210, 60%, 98%);
+      border-radius: 5px;
+    }
+
+    .notification-dot {
+      width: 8px;
+      height: 8px;
+      background-color: red;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .notification-text-private-message {
+      display: none;
+      margin-top: 8px;
+      padding: 10px;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      font-size: 14px;
+    }
+
+    /* Removed display: none for .notification-text to make it visible by default */
+    .notification-text {
+      margin-top: 8px;
+      padding: 10px;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
       main {
-        max-width: 600px;
-        margin: 40px auto;
-        background-color: white;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      }
-
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-      }
-
-      header h1 {
-        font-size: 20px;
-        margin: 0;
-      }
-
-      .mark-all-button {
-        background: none;
-        border: none;
-        color: hsl(219, 85%, 26%);
-        font-weight: bold;
-        cursor: pointer;
-      }
-
-      ul#list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+        margin: 20px;
+        padding: 15px;
       }
 
       ul#list li {
-        display: flex;
+        flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
-        padding: 15px 0;
-        border-bottom: 1px solid #eee;
-      }
-
-      ul#list li:last-child {
-        border-bottom: none;
       }
 
       ul#list li img {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
+        width: 40px;
+        height: 40px;
       }
-      .notification-text {
-        display: none;
-      }
+
       .notification-infos {
-        flex: 1;
+        margin-top: 5px;
       }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Notifications</h1>
+      <span class="notifications-counter">3</span>
+      <button class="mark-all-button">Mark all as read</button>
+    </header>
 
-      .notification-infos a {
-        font-weight: bold;
-        color: hsl(219, 85%, 26%);
-        text-decoration: none;
-      }
+    <ul id="list">
+      <li class="new-notification">
+        <img src="./assets/images/avatar-mark-webber.png" alt="Avatar" />
+        <div class="notification-infos">
+          <a href="#" class="profile-link">Mark Webber</a>
+          <span>reacted to your recent post</span>
+          <a href="#" class="notification-link-post">My first tournament today!</a>
+          <span>1m ago</span>
+        </div>
+        <span class="notification-dot"></span>
+        <p class="notification-text">
+          Mark Webber really enjoyed your first tournament post and shared his excitement!
+        </p>
+      </li>
 
-      .notification-infos span {
-        margin-right: 5px;
-      }
+      <li class="new-notification">
+        <img src="./assets/images/avatar-angela-gray.png" alt="Avatar" />
+        <div class="notification-infos">
+          <a href="#" class="profile-link">Angela Gray</a>
+          <span>followed you</span>
+          <span>5m ago</span>
+        </div>
+        <span class="notification-dot"></span>
+      </li>
 
-      .notification-link-post {
-        font-weight: bold;
-        color: hsl(219, 85%, 26%);
-        text-decoration: none;
-      }
+      <li class="new-notification">
+        <img src="./assets/images/avatar-jacob-thompson.png" alt="Avatar" />
+        <div class="notification-infos">
+          <a href="#" class="profile-link">Jacob Thompson</a>
+          <span>has joined your group</span>
+          <a href="#" class="notification-link-post">Chess Club</a>
+          <span>1 day ago</span>
+        </div>
+        <span class="notification-dot"></span>
+      </li>
 
-      .new-notification {
-        background-color: hsl(210, 60%, 98%);
-        border-radius: 5px;
-      }
+      <li>
+        <img src="./assets/images/avatar-rizky-hasanuddin.png" alt="Avatar" />
+        <div class="notification-infos">
+          <a href="#" class="profile-link">Rizky Hasanuddin</a>
+          <span>sent you a private message</span>
+          <span>5 days ago</span>
+        </div>
+        <p class="notification-text-private-message">
+          Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and 
+          I'm already having lots of fun and improving my game.
+        </p>
+      </li>
 
-      .notification-dot {
-        width: 8px;
-        height: 8px;
-        background-color: red;
-        border-radius: 50%;
-        display: inline-block;
-      }
+      <li>
+        <img src="./assets/images/avatar-kimberly-smith.png" alt="Avatar" />
+        <div class="notification-infos">
+          <a href="#" class="profile-link">Kimberly Smith</a>
+          <span>commented on your picture</span>
+          <span>1 week ago</span>
+        </div>
+        <img src="picture-commented.jpg" alt="Commented picture" />
+      </li>
 
-      .notification-text-private-message {
-        display: none;
-        margin-top: 8px;
-        padding: 10px;
-        border: 1px solid #eee;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-        font-size: 14px;
-      }
+      <li>
+        <img src="./assets/images/avatar-nathan-peterson.png" alt="Avatar" />
+        <div class="notification-infos">
+          <a href="#" class="profile-link">Nathan Peterson</a>
+          <span>reacted to your recent post</span>
+          <a href="#" class="notification-link-post">5 end-game strategies to increase your win rate</a>
+          <span>2 weeks ago</span>
+        </div>
+      </li>
 
-      .notification-text {
-        display: none;
-      }
+      <li>
+        <img src="./assets/images/avatar-anna-kim.png" alt="Avatar" />
+        <div class="notification-infos">
+          <a href="#" class="profile-link">Anna Kim</a>
+          <span>left the group</span>
+          <a href="#" class="notification-link-post">Chess Club</a>
+          <span>2 weeks ago</span>
+        </div>
+      </li>
+    </ul>
+  </main>
 
-      footer {
-        text-align: center;
-        font-size: 12px;
-        color: #999;
-        margin-top: 20px;
-      }
+  <footer>
+    <p>Challenge by <a href="https://www.crio.do/" target="_blank">Crio</a>.</p>
+  </footer>
+  <script>
+    const counter = document.querySelector('.notifications-counter');
+    const markAllBtn = document.querySelector('.mark-all-button');
+    const notifications = document.querySelectorAll('#list li');
+    const unreadNotifications = document.querySelectorAll('.new-notification');
 
-      @media (max-width: 768px) {
-        main {
-          margin: 20px;
-          padding: 15px;
-        }
+    // Update counter initially
+    counter.textContent = unreadNotifications.length;
 
-        ul#list li {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        ul#list li img {
-          width: 40px;
-          height: 40px;
-        }
-
-        .notification-infos {
-          margin-top: 5px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <header>
-        <h1>Notifications</h1>
-        <span class="notifications-counter">3</span>
-        <button class="mark-all-button">Mark all as read</button>
-      </header>
-
-      <ul id="list">
-        <li class="new-notification">
-          <img src="./assets/images/avatar-mark-webber.png" alt="Avatar" />
-          <div class="notification-infos">
-            <a href="#" class="profile-link">Mark Webber</a>
-            <span>reacted to your recent post</span>
-            <a href="#" class="notification-link-post"
-              >My first tournament today!</a
-            >
-            <span>1m ago</span>
-          </div>
-          <span class="notification-dot"></span>
-          <p class="notification-text"></p>
-        </li>
-
-        <li class="new-notification">
-          <img src="./assets/images/avatar-angela-gray.png" alt="Avatar" />
-          <div class="notification-infos">
-            <a href="#" class="profile-link">Angela Gray</a>
-            <span>followed you</span>
-            <span>5m ago</span>
-          </div>
-          <span class="notification-dot"></span>
-          <p class="notification-text"></p>
-        </li>
-
-        <li class="new-notification">
-          <img src="./assets/images/avatar-jacob-thompson.png" alt="Avatar" />
-          <div class="notification-infos">
-            <a href="#" class="profile-link">Jacob Thompson</a>
-            <span>has joined your group</span>
-            <a href="#" class="notification-link-post">Chess Club</a>
-            <span>1 day ago</span>
-          </div>
-          <span class="notification-dot"></span>
-          <p class="notification-text"></p>
-        </li>
-
-        <li>
-          <img src="./assets/images/avatar-rizky-hasanuddin.png" alt="Avatar" />
-          <div class="notification-infos">
-            <a href="#" class="profile-link">Rizky Hasanuddin</a>
-            <span>sent you a private message</span>
-            <span>5 days ago</span>
-          </div>
-          <p class="notification-text-private-message">
-            Hello, thanks for setting up the Chess Club. I've been a member for
-            a few weeks now and I'm already having lots of fun and improving my
-            game.
-          </p>
-          <p class="notification-text"></p>
-        </li>
-
-        <li>
-          <img src="./assets/images/avatar-kimberly-smith.png" alt="Avatar" />
-          <div class="notification-infos">
-            <a href="#" class="profile-link">Kimberly Smith</a>
-            <span>commented on your picture</span>
-            <span>1 week ago</span>
-          </div>
-          <img src="picture-commented.jpg" alt="Commented picture" />
-          <p class="notification-text"></p>
-        </li>
-
-        <li>
-          <img src="./assets/images/avatar-nathan-peterson.png" alt="Avatar" />
-          <div class="notification-infos">
-            <a href="#" class="profile-link">Nathan Peterson</a>
-            <span>reacted to your recent post</span>
-            <a href="#" class="notification-link-post"
-              >5 end-game strategies to increase your win rate</a
-            >
-            <span>2 weeks ago</span>
-          </div>
-          <p class="notification-text"></p>
-        </li>
-
-        <li>
-          <img src="./assets/images/avatar-anna-kim.png" alt="Avatar" />
-          <div class="notification-infos">
-            <a href="#" class="profile-link">Anna Kim</a>
-            <span>left the group</span>
-            <a href="#" class="notification-link-post">Chess Club</a>
-            <span>2 weeks ago</span>
-          </div>
-          <p class="notification-text"></p>
-        </li>
-      </ul>
-    </main>
-
-    <footer>
-      <p>
-        Challenge by <a href="https://www.crio.do/" target="_blank">Crio</a>.
-      </p>
-    </footer>
-
-    <script>
-      const counter = document.querySelector(".notifications-counter");
-      const markAllBtn = document.querySelector(".mark-all-button");
-      const notifications = document.querySelectorAll("#list li");
-      const unreadNotifications =
-        document.querySelectorAll(".new-notification");
-
-      // Update counter initially
-      counter.textContent = unreadNotifications.length;
-
-      // Mark all as read
-      markAllBtn.addEventListener("click", () => {
-        notifications.forEach((li) => {
-          li.classList.remove("new-notification");
-          const dot = li.querySelector(".notification-dot");
-          if (dot) {
-            dot.style.display = "none";
-          }
-        });
-        counter.textContent = 0;
-      });
-
-      // Toggle private message on click
+    // Mark all as read
+    markAllBtn.addEventListener('click', () => {
       notifications.forEach((li) => {
-        li.addEventListener("click", () => {
-          const privateMessage = li.querySelector(
-            ".notification-text-private-message"
-          );
-          if (privateMessage) {
-            privateMessage.style.display =
-              privateMessage.style.display === "block" ? "none" : "block";
-          }
-        });
+        li.classList.remove('new-notification');
+        const dot = li.querySelector('.notification-dot');
+        if (dot) {
+          dot.style.display = 'none';
+        }
       });
-    </script>
-  </body>
+      counter.textContent = 0;
+    });
+
+    // Toggle private message on click
+    notifications.forEach((li) => {
+      li.addEventListener('click', () => {
+        const privateMessage = li.querySelector('.notification-text-private-message');
+        if (privateMessage) {
+          privateMessage.style.display = privateMessage.style.display === 'block' ? 'none' : 'block';
+        }
+      });
+    });
+  </script>
+</body>
 </html>
